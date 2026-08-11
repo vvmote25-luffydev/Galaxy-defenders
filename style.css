@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    background: #050510;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px 0 10px;
+    letter-spacing: 3px;
+}
+
+.game-info {
+    width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    border: 3px solid white;
+    background: black;
+}
+
+#gameOver {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    border: 2px solid white;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+}
