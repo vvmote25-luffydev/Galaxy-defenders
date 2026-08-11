@@ -1,122 +1,290 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
+    <!-- =====================================================
+         BASIC PAGE SETTINGS
+         ===================================================== -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<meta name="description" content="Galaxy Defender - A 2D space shooter game">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>🚀 Galaxy Defender</title>
+    <meta
+        name="description"
+        content="Galaxy Defender - Retro Arcade Space Shooter"
+    >
 
-<link rel="stylesheet" href="style.css">
-```
+    <title>🚀 Galaxy Defender</title>
+
+
+    <!-- =====================================================
+         STYLESHEET
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
+
 <body>
 
-```
-<!-- Game Header -->
-<header class="game-header">
+    <!-- =====================================================
+         MAIN GAME CONTAINER
+         ===================================================== -->
 
-    <h1>🚀 GALAXY DEFENDER</h1>
-
-    <p class="subtitle">
-        Defend the galaxy from the incoming enemies!
-    </p>
-
-</header>
+    <main id="game">
 
 
-<!-- Game Information -->
-<section class="game-info">
+        <!-- =================================================
+             TOP HUD
+             ================================================= -->
 
-    <div class="score-box">
-        ⭐ Score:
-        <span id="score">0</span>
-    </div>
-
-    <div class="controls-box">
-        🎮 ← → Move &nbsp; | &nbsp; 🚀 SPACE Shoot
-    </div>
-
-    <div class="lives-box">
-        ❤️ Lives:
-        <span id="lives">3</span>
-    </div>
-
-</section>
+        <header class="hud">
 
 
-<!-- Game Area -->
-<main class="game-container">
+            <!-- SCORE -->
 
-    <canvas
-        id="gameCanvas"
-        width="800"
-        height="600"
-    ></canvas>
+            <div class="hud-box">
 
-</main>
+                <span class="label">
+                    SCORE
+                </span>
 
+                <span id="score">
+                    000000
+                </span>
 
-<!-- Game Over Screen -->
-<div id="gameOver" class="game-over">
-
-    <div class="game-over-content">
-
-        <h2>💥 GAME OVER 💥</h2>
-
-        <p>
-            The galaxy needs you!
-        </p>
-
-        <p class="final-score">
-            ⭐ Final Score:
-            <span id="finalScore">0</span>
-        </p>
-
-        <button onclick="restartGame()">
-            🚀 PLAY AGAIN
-        </button>
-
-    </div>
-
-</div>
+            </div>
 
 
-<!-- Instructions -->
-<section class="instructions">
+            <!-- GAME TITLE -->
 
-    <h2>🎮 How to Play</h2>
+            <div class="title">
 
-    <p>
-        <strong>←</strong>
-        Move Left
-    </p>
+                <div class="title-main">
+                    GALAXY
+                </div>
 
-    <p>
-        <strong>→</strong>
-        Move Right
-    </p>
+                <div class="title-sub">
+                    DEFENDER
+                </div>
 
-    <p>
-        <strong>SPACE</strong>
-        Shoot
-    </p>
+                <div class="mission">
+                    DESTROY THEM ALL!
+                </div>
 
-    <p>
-        Destroy enemies 👾 and protect the galaxy!
-    </p>
-
-</section>
+            </div>
 
 
-<!-- JavaScript -->
-<script src="game.js"></script>
-```
+            <!-- LIVES -->
+
+            <div class="hud-box lives">
+
+                <span class="label">
+                    LIVES
+                </span>
+
+                <span id="lives">
+                    ♥ ♥ ♥
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             GAME CANVAS
+
+             IMPORTANT:
+             Do NOT add width="800" or height="600".
+             JavaScript automatically makes this fullscreen.
+             ================================================= -->
+
+        <canvas id="gameCanvas"></canvas>
+
+
+
+        <!-- =================================================
+             START SCREEN
+             ================================================= -->
+
+        <section
+            id="startScreen"
+            class="overlay"
+        >
+
+            <div class="arcade-panel">
+
+
+                <!-- TITLE -->
+
+                <div class="panel-title">
+                    GALAXY DEFENDER
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <p>
+                    THE GALAXY NEEDS YOU, PILOT!
+                </p>
+
+
+                <!-- CONTROLS -->
+
+                <div class="controls">
+
+
+                    <div>
+
+                        <kbd>←</kbd>
+
+                        <kbd>→</kbd>
+
+                        MOVE
+
+                    </div>
+
+
+                    <div>
+
+                        <kbd>SPACE</kbd>
+
+                        SHOOT
+
+                    </div>
+
+                </div>
+
+
+                <!-- START BUTTON -->
+
+                <button
+                    id="startButton"
+                    type="button"
+                    onclick="startGame()"
+                >
+
+                    ▶ START GAME
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GAME OVER SCREEN
+             ================================================= -->
+
+        <section
+            id="gameOver"
+            class="overlay hidden"
+        >
+
+            <div class="arcade-panel">
+
+
+                <!-- GAME OVER TITLE -->
+
+                <div class="game-over-title">
+                    GAME OVER
+                </div>
+
+
+                <!-- SCORE LABEL -->
+
+                <p>
+                    YOUR SCORE
+                </p>
+
+
+                <!-- FINAL SCORE -->
+
+                <div id="finalScore">
+                    000000
+                </div>
+
+
+                <!-- RESTART BUTTON -->
+
+                <button
+                    id="restartButton"
+                    type="button"
+                    onclick="restartGame()"
+                >
+
+                    ▶ PLAY AGAIN
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BOTTOM CONTROL INFORMATION
+             ================================================= -->
+
+        <footer class="bottom-info">
+
+
+            <div>
+
+                <span>◀</span>
+                <span>▶</span>
+
+                MOVE
+
+            </div>
+
+
+            <div>
+
+                <span>SPACE</span>
+
+                SHOOT
+
+            </div>
+
+
+            <div>
+
+                GOOD LUCK, PILOT!
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         
+         IMPORTANT:
+         Keep this at the bottom so the HTML elements
+         exist before game.js tries to access them.
+         ===================================================== -->
+
+    <script src="game.js"></script>
 
 </body>
+
 </html>
